@@ -1,0 +1,70 @@
+.header{
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5), /* Capa negra con opacidad */
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('../../public/Header.jpg');
+    padding-top: 6%;
+    padding-bottom: 6%;
+    color: white;
+    text-align: center;
+}
+
+.header h1{
+    font-size: 40px;
+}
+
+.header h3{
+    font-size: 15px;
+}
+
+.navbar{
+    background-color: black;
+    color: white;
+
+}
+
+.navbar i{
+    color: yellow;
+}
+
+.navbar h2{
+    font-size: 25px;
+    margin-right: 1.5%;
+    margin-left: 1.5%;
+}
+
+.navbar Button{
+    font-size: 15px;
+    margin-right: 0.5%;
+    margin-left: 0.5%;
+}
+
+.menu{
+    display: flex;
+    justify-content: start;
+    width: 80%;
+}
+
+.carrito{
+    display: flex;
+    justify-content: end;
+    width: 20%;
+
+}
+
+.carrito Button{
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.card-img-top {
+    width: 100%;     
+    height: 250px;         
+    object-fit: cover;     
+}
+
+.footer{
+    background-color: black;
+    color: white;
+}
