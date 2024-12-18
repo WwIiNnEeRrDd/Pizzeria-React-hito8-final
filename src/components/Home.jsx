@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import CardPizza from './CardPizza'
 import { Col, Row } from 'react-bootstrap'
@@ -6,12 +6,27 @@ import { pizzas } from '../utils/pizzas.js'
 
 const Home = () => {
 
+    const [pizzaList, setPizzaList] = useState([]);
+
+    useEffect(() => {
+      async function getData() {
+        const res = await fetch('http://localhost:5000/api/pizzas');
+        const data = await res.json();
+
+        setPizzaList(data)
+        
+      }
+
+      getData();
+    
+    },[])
+    
 
   return (
     <>
         <Header></Header>
         <Row className="d-flex justify-content-evenly m-5">
-            {pizzas.map((pizza) => (
+            {pizzaList.map((pizza) => (
                 <Col 
                     key={pizza.id} 
                     xs={12} sm={6} md={4} 
