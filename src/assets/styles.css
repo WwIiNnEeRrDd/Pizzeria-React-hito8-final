@@ -34,12 +34,6 @@
     margin-left: 1.5%;
 }
 
-.navbar Button{
-    font-size: 15px;
-    margin-right: 0.5%;
-    margin-left: 0.5%;
-}
-
 .menu{
     display: flex;
     justify-content: start;

@@ -4,6 +4,7 @@ import '../assets/styles.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import { formatter } from '../utils/formatter';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -14,18 +15,28 @@ const Navbar = () => {
     <div className='navbar'>
         <div className='menu'>
             <h2>Pizzeria Mamma Mia</h2>
-            <Button variant="outline-light"><i className="fa-solid fa-pizza-slice"></i> Home</Button>
+            <Link to="/" className="btn btn-outline-light me-3">
+                <i className="fa-solid fa-pizza-slice "></i> Home
+            </Link>
             {token ? 
             (
                 <>
-                <Button variant="outline-light"><i className="fa-solid fa-user"></i> Profile</Button>
-                <Button variant="outline-light"><i className="fa-solid fa-lock"></i> Logout</Button>
+                    <Link to="/profile" className="btn btn-outline-light me-3"> 
+                        <i className="fa-solid fa-user"></i> Profile
+                    </Link>
+                    <Link className="btn btn-outline-light me-3"> 
+                        <i className="fa-solid fa-lock"></i> Logout
+                    </Link>
                 </>
             ) : 
             ( 
                 <>
-                <Button variant="outline-light"><i className="fa-solid fa-key"></i> Login</Button>
-                <Button variant="outline-light"><i className="fa-solid fa-key"></i> Register</Button>
+                    <Link to="/login" className="btn btn-outline-light me-3"> 
+                        <i className="fa-solid fa-key"></i> Login
+                    </Link>
+                    <Link to="/register" className="btn btn-outline-light me-3"> 
+                        <i className="fa-solid fa-key"></i> Register
+                    </Link>
                 </>
             )}
 
@@ -33,7 +44,9 @@ const Navbar = () => {
             
         </div>
         <div className='carrito'>
-            <Button variant="outline-light"> 🛒Total: ${formatter(total)}</Button>
+            <Link to="/cart" className="btn btn-outline-light me-3"> 
+                🛒Total: ${formatter(total)}
+            </Link>
         </div>
         
         
