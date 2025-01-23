@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button, Card, ListGroup } from 'react-bootstrap'
 import { formatter } from '../utils/formatter'
+import { CartContext } from '../context/CartContext';
 
 const CardPizza = (props) => {
+
+    const { addToCart } = useContext(CartContext);
+
+    const handleAddProducts = () => {
+        addToCart({
+            id: props.id,
+            name: props.name,
+            price: props.price,
+            img: props.img
+          });
+    }
+
   return (
     <>
         <Card className='card'>
@@ -20,7 +33,7 @@ const CardPizza = (props) => {
             </Card.Body>
             <Card.Body className='d-flex justify-content-evenly pt-0'>
                 <Button variant="light border-black">Ver más <i className="fa-solid fa-eye"></i></Button>
-                <Button variant="dark">Añadir 🛒</Button>
+                <Button variant="dark" onClick={handleAddProducts}>Añadir 🛒</Button>
             </Card.Body>
         </Card>
     </>
