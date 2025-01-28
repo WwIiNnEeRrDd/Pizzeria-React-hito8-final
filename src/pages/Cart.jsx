@@ -3,10 +3,12 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { pizzaCart } from '../utils/pizzas.js'
 import { formatter } from '../utils/formatter.js'
 import { CartContext } from "../context/CartContext.jsx";
+import { UserContext } from "../context/UserContext.jsx";
 
 const Cart = () => {
 
   const { pizzaCartTotal, handleAddCount, handleRestCount, calculateTotal } = useContext(CartContext);
+  const { userToken } = useContext(UserContext);
 
   return (
     <Container className="mt-4">
@@ -70,7 +72,7 @@ const Cart = () => {
 
       <Row>
         <Col>
-          <Button variant="dark" size="lg" className="mb-4">
+          <Button variant="dark" size="lg" className={`mb-4 ${userToken && pizzaCartTotal.length > 0 ? '' : 'disabled'}`}>
             Pagar
           </Button>
         </Col>

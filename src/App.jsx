@@ -10,24 +10,27 @@ import NotFound from './pages/NotFound';
 import { Route, Routes } from 'react-router-dom';
 import Profile from './pages/Profile';
 import { CartProvider } from './context/CartContext';
+import { UserProvider } from './context/UserContext';
 
 function App() {
 
   return (
     <>
-      <CartProvider>
-        <Navbar></Navbar>
-        <Routes>
-          <Route path='/' element={<Home></Home>}></Route>
-          <Route path='/cart' element={<Cart></Cart>}></Route>
-          <Route path='/login' element={<Login></Login>}></Route>
-          <Route path='/register' element={<Register></Register>}></Route>
-          <Route path='/pizza/p001' element={<Pizza></Pizza>}></Route>
-          <Route path='/profile' element={<Profile></Profile>}></Route>
-          <Route path='*' element={<NotFound></NotFound>}></Route>
-        </Routes>
-        <Footer></Footer>
-      </CartProvider>
+      <UserProvider>
+        <CartProvider>
+          <Navbar></Navbar>
+          <Routes>
+            <Route path='/' element={<Home></Home>}></Route>
+            <Route path='/cart' element={<Cart></Cart>}></Route>
+            <Route path='/login' element={<Login></Login>}></Route>
+            <Route path='/register' element={<Register></Register>}></Route>
+            <Route path='/pizza/:id' element={<Pizza></Pizza>}></Route>
+            <Route path='/profile' element={<Profile></Profile>}></Route>
+            <Route path='*' element={<NotFound></NotFound>}></Route>
+          </Routes>
+          <Footer></Footer>
+        </CartProvider>
+      </UserProvider>
     </>
   )
 }

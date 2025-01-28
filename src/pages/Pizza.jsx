@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 
 const Pizza = () => {
+
+    const {id} = useParams();
 
     const [pizza, setPizza] = useState({
         name: "",
@@ -13,7 +16,7 @@ const Pizza = () => {
 
     useEffect(() => {
       async function getData() {
-        const res = await fetch('http://localhost:5000/api/pizzas/p001');
+        const res = await fetch(`http://localhost:5000/api/pizzas/${id}`);
         const data = await res.json();
 
         setPizza(data)
@@ -23,6 +26,8 @@ const Pizza = () => {
       getData();
     
     },[])
+
+
 
 return (
     <Container className="my-5">

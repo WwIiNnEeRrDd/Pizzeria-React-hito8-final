@@ -57,7 +57,6 @@ export const CartProvider = ({ children }) => {
         });
     };
     
-
     const values = {
         handleAddCount,
         handleRestCount,

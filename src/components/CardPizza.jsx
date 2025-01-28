@@ -2,10 +2,12 @@ import React, { useContext } from 'react'
 import { Button, Card, ListGroup } from 'react-bootstrap'
 import { formatter } from '../utils/formatter'
 import { CartContext } from '../context/CartContext';
+import { useNavigate } from 'react-router-dom';
 
 const CardPizza = (props) => {
 
     const { addToCart } = useContext(CartContext);
+    const navigate = useNavigate();
 
     const handleAddProducts = () => {
         addToCart({
@@ -13,7 +15,11 @@ const CardPizza = (props) => {
             name: props.name,
             price: props.price,
             img: props.img
-          });
+        });
+    }
+
+    const handlePizzaDetails = () => {
+        navigate(`/pizza/${props.id}`);
     }
 
   return (
@@ -32,7 +38,7 @@ const CardPizza = (props) => {
                 <h1 className='fs-4 text-center'>Precio: ${formatter(props.price)}</h1>
             </Card.Body>
             <Card.Body className='d-flex justify-content-evenly pt-0'>
-                <Button variant="light border-black">Ver más <i className="fa-solid fa-eye"></i></Button>
+                <Button variant="light border-black" onClick={handlePizzaDetails}>Ver más <i className="fa-solid fa-eye"></i></Button>
                 <Button variant="dark" onClick={handleAddProducts}>Añadir 🛒</Button>
             </Card.Body>
         </Card>
