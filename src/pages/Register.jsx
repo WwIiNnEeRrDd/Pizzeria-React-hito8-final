@@ -1,19 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import '../assets/styles.css';
-import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../context/UserContext';
 
 const Register = () => {
-
-    const { userToken } = useContext(UserContext);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if(userToken){
-            navigate(`/`);
-          }
-    }, [userToken, navigate])
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

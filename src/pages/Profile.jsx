@@ -1,21 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { UserContext } from "../context/UserContext";
-import { useNavigate } from "react-router-dom";
 
 function Profile() {
-
-  const { userToken } = useContext(UserContext);
-  const navigate = useNavigate();
-
-    useEffect(() => {
-      if(!userToken){
-        navigate(`/login`);
-      }
-    
-    }, [userToken, navigate])
-
 
   return (
     <Card className="text-center mx-auto mt-5 mb-5" style={{ maxWidth: "500px" }}>
