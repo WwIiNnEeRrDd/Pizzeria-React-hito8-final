@@ -10,7 +10,7 @@ import NotFound from './pages/NotFound';
 import { Route, Routes } from 'react-router-dom';
 import Profile from './pages/Profile';
 import { CartProvider } from './context/CartContext';
-import { UserContext, UserProvider } from './context/UserContext';
+import { UserContext } from './context/UserContext';
 import { useContext } from 'react';
 
 function App() {

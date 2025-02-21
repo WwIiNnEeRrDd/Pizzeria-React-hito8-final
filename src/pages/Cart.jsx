@@ -10,6 +10,29 @@ const Cart = () => {
   const { pizzaCartTotal, handleAddCount, handleRestCount, calculateTotal } = useContext(CartContext);
   const { userToken } = useContext(UserContext);
 
+  const handleCheckout = async () => {
+    if (!userToken) return alert("Debes iniciar sesión para realizar la compra");
+
+    try {
+      const res = await fetch("http://localhost:5000/api/checkouts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+        body: JSON.stringify({ pizzaCartTotal }),
+      });
+
+      if (res.ok) {
+        alert("Compra realizada con éxito");
+      } else {
+        alert("Hubo un problema con la compra");
+      }
+    } catch (error) {
+      console.error("Error en checkout:", error);
+    }
+  };
+
   return (
     <Container className="mt-4">
       <h4 className="mb-4">Detalles del pedido:</h4>
@@ -72,7 +95,7 @@ const Cart = () => {
 
       <Row>
         <Col>
-          <Button variant="dark" size="lg" className={`mb-4 ${userToken && pizzaCartTotal.length > 0 ? '' : 'disabled'}`}>
+          <Button variant="dark" size="lg" onClick={handleCheckout} className={`mb-4 ${userToken && pizzaCartTotal.length > 0 ? '' : 'disabled'}`}>
             Pagar
           </Button>
         </Col>
